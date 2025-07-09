@@ -1,4 +1,8 @@
 {
+  "type": "module",
+  "name": "controle-vendas",
+  "version": "1.0.0",
+  "description": "A simple sales control system with product management and stock tracking.",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",

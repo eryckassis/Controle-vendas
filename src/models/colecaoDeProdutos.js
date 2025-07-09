@@ -1,3 +1,5 @@
+export default ColecaoDeProdutos;
+
 class ColecaoDeProdutos {
   constructor() {
     this.produtos = [];
@@ -19,5 +21,3 @@ class ColecaoDeProdutos {
     );
   }
 }
-
-export default ColecaoDeProdutos;

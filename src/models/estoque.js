@@ -1,4 +1,4 @@
-import ColecaoDeProdutos from "./colecaoDeProduto.js";
+import ColecaoDeProdutos from "./colecaoDeProdutos.js";
 
 class NomeProduto {
   constructor(valor) {
@@ -21,7 +21,10 @@ class Produto {
     return this.nomeProduto.ehIgualA(outroProduto.nomeProduto);
   }
   diminuirQuantidade(valor) {
-    return (this.quantidade -= valor);
+    if (valor > this.quantidade) {
+      throw new Error("Quantidade insuficiente para diminuir.");
+    }
+    this.quantidade -= valor;
   }
   quantidadeDisponivel() {
     return this.quantidade;
@@ -51,10 +54,6 @@ class Estoque {
   listarProdutos() {
     return this.colecao.listar();
   }
-
-  removerProduto() {
-    this.colecao.limpar(produto);
-  }
 }
 
 class Venda {
@@ -70,9 +69,11 @@ class Venda {
       return `Estoque insuficiente para: ${produto.exibirNome()}`;
     produtoNoEstoque.diminuirQuantidade(quantidade);
     if (produtoNoEstoque.quantidadeDisponivel() === 0) {
-      this.estoque.removeProduto(produto);
+      this.estoque.removerProduto(produto);
     }
     return `Venda Realizada de ${quantidade} unidade(s) de ${produto.exibirNome()}.`;
   }
 }
 console.log("Modelo de Estoque carregado com sucesso!");
+
+export { NomeProduto, Produto, Estoque, Venda };
