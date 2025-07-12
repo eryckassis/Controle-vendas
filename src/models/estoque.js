@@ -1,11 +1,12 @@
 import ColecaoDeProdutos from "./colecaoDeProdutos.js";
+import _ from "lodash";
 
 class NomeProduto {
   constructor(valor) {
     this.valor = valor;
   }
   ehIgualA(outroNome) {
-    return this.valor === outroNome.valor;
+    return _.isEqual(this.valor, outroNome.valor);
   }
   exibir() {
     return this.valor;
@@ -18,7 +19,8 @@ class Produto {
     this.quantidade = quantidade;
   }
   mesmoProduto(outroProduto) {
-    return this.nomeProduto.ehIgualA(outroProduto.nomeProduto);
+    // Utilizando _.isEqual se o nome do produto é o mesmo
+    return _.isEqual(this.nomeProduto, outroProduto.nomeProduto);
   }
   diminuirQuantidade(valor) {
     if (valor > this.quantidade) {
